@@ -1,7 +1,11 @@
 import pygame
 from constants import *
 
-def main():
+clock = pygame.time.Clock()
+dt = 0
+
+
+def main(dt):
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -11,7 +15,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        deltaTime = clock.tick(60) / 1000.0
+        dt += deltaTime
 
 
 if __name__ == "__main__":
-    main()
+    main(dt)
